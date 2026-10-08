@@ -3,6 +3,7 @@
 **A concept paper on verifiable, balanced, non-accusatory governance forensics**
 
 Priority Nexus LLC · Systems Assurance Forensic Investigation & Design
+Josie Anderson, Architecture & Systems Lead · theaistherapist@gmail.com
 Version 0.1 · October 2026
 
 > Published openly as a public, dated record of this method, so that it stays free for anyone to use and can't

@@ -37,4 +37,8 @@ Priority Nexus™ is a trademark of Priority Nexus LLC.
 The **Priority Nexus Deterministic Governance & Circuit-Breaker Architecture**, the concept this project implements:
 https://github.com/PriorityNexusLLC/Deterministic-Governance-Circuit-Breaker-Architecture
 
+## Team & contact
+* **Architecture & Systems Lead:** Josie Anderson
+* **Contact:** theaistherapist@gmail.com
+
 Signals produced by this software are for review, not findings of wrongdoing.

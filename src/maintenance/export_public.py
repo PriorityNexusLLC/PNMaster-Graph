@@ -23,6 +23,7 @@ PRIVATE_LINES = re.compile(r"McDonald|mcd_board|corporate names\.md|Connections\
 # file (data/private_terms.txt, one per line) that is never exported
 LEAKS = [re.compile(p, re.I) for p in (r"[\w.+-]+@(gmail|yahoo|outlook|hotmail|icloud)\.com", r"[A-Z]:\\Users\\[^\\\s]+",
                                         r"api_key\"\s*:\s*\"[A-Za-z0-9]{12,}")]
+PUBLIC_CONTACT = ["theaistherapist@gmail.com", "Josie Anderson"]   # chosen by the investigator to be public
 _terms = os.path.join(ROOT, "data", "private_terms.txt")
 if os.path.exists(_terms):
     LEAKS += [re.compile(re.escape(t.strip()), re.I) for t in open(_terms, encoding="utf-8") if t.strip()]
@@ -41,9 +42,12 @@ def copytree(src, dst, skip=()):
 
 def main():
     dst = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.expanduser("~"), "Documents", "PNMaster-Graph")
-    if os.path.exists(dst):
-        shutil.rmtree(dst)
-    os.makedirs(dst)
+    os.makedirs(dst, exist_ok=True)
+    for x in os.listdir(dst):                       # rebuild everything except the git history
+        if x == ".git":
+            continue
+        p = os.path.join(dst, x)
+        shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
     copytree(os.path.join(ROOT, "src"), os.path.join(dst, "src"))
     copytree(os.path.join(ROOT, "tests"), os.path.join(dst, "tests"), skip={"fixture_graph.json"})
     copytree(paths.HOOT_DIR, os.path.join(dst, "hoot"), skip=HOOT_SKIP)
@@ -63,7 +67,8 @@ def main():
     shutil.copy2(os.path.join(ROOT, "docs", "PUBLIC_README.md"), os.path.join(dst, "README.md"))
 
     problems, count = [], 0
-    for d, _, files in os.walk(dst):
+    for d, dirs, files in os.walk(dst):
+        dirs[:] = [x for x in dirs if x != ".git"]
         for f in files:
             count += 1
             p = os.path.join(d, f)
@@ -71,6 +76,8 @@ def main():
                 text = open(p, encoding="utf-8", errors="ignore").read()
             except OSError:
                 continue
+            for allowed in PUBLIC_CONTACT:              # the investigator's chosen public contact is fine
+                text = text.replace(allowed, "")
             for rx in LEAKS:
                 m = rx.search(text)
                 if m:
