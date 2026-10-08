@@ -1,0 +1,131 @@
+{
+  "_comment": "Governance gate configuration. The validator reads every rule from here, so the gate can be tightened or swapped without touching code. No Priority Nexus threshold equations live in this repository.",
+  "identity": {
+    "accepted_keys": ["sec_cik", "gleif_lei", "doi", "canonical_id", "irs_ein"],
+    "patterns": {
+      "irs_ein": "^[0-9]{2}-[0-9]{7}$",
+      "sec_cik": "^[0-9]{10}$",
+      "gleif_lei": "^[A-Z0-9]{18}[0-9]{2}$",
+      "doi": "^10\\.[0-9]{4,9}/\\S+$",
+      "canonical_id": "^[A-Z0-9][A-Z0-9:_\\-.]{2,63}$"
+    },
+    "node_id_pattern": "^ENT_[A-Z0-9_]{2,60}$"
+  },
+  "transparency": {
+    "source_types": {
+      "DEF 14A": {
+        "label": "SEC Form DEF 14A (proxy statement)",
+        "reference_label": "SEC accession number",
+        "reference_pattern": "^[0-9]{10}-[0-9]{2}-[0-9]{6}$",
+        "url_hosts": ["sec.gov", "www.sec.gov"]
+      },
+      "13F-HR": {
+        "label": "SEC Form 13F-HR (institutional holdings)",
+        "reference_label": "SEC accession number",
+        "reference_pattern": "^[0-9]{10}-[0-9]{2}-[0-9]{6}$",
+        "url_hosts": ["sec.gov", "www.sec.gov"]
+      },
+      "Form 3/4/5": {
+        "label": "SEC Form 3/4/5 (insider statement, statutory under §16(a))",
+        "reference_label": "SEC accession number",
+        "reference_pattern": "^[0-9]{10}-[0-9]{2}-[0-9]{6}$",
+        "url_hosts": ["sec.gov", "www.sec.gov"],
+        "extension": "Added 2026-10-07: statutory SEC filing, not in the original CLAUDE.md list"
+      },
+      "Schedule 13D/13G": {
+        "label": "SEC Schedule 13D/13G (beneficial ownership >5%, statutory under §13(d))",
+        "reference_label": "SEC accession number",
+        "reference_pattern": "^[0-9]{10}-[0-9]{2}-[0-9]{6}$",
+        "url_hosts": ["sec.gov", "www.sec.gov"],
+        "extension": "Added 2026-10-07: statutory SEC filing, not in the original CLAUDE.md list"
+      },
+      "Form D": {
+        "label": "SEC Form D (private offering notice: lists directors & executive officers)",
+        "reference_label": "SEC accession number",
+        "reference_pattern": "^[0-9]{10}-[0-9]{2}-[0-9]{6}$",
+        "url_hosts": ["sec.gov", "www.sec.gov"],
+        "extension": "Added 2026-10-08: statutory SEC filing covering private companies"
+      },
+      "UK Companies House": {
+        "label": "UK Companies House register (statutory, Companies Act 2006)",
+        "reference_label": "UK company number",
+        "reference_pattern": "^[A-Z0-9]{8}$",
+        "url_hosts": ["company-information.service.gov.uk"],
+        "extension": "Added 2026-10-08: national statutory company register"
+      },
+      "U.S. Senate roster": {
+        "label": "U.S. Senate official rosters (senate.gov: senators and committee memberships)",
+        "reference_label": "Senate committee code (e.g. SSBK00) or Bioguide ID (e.g. S001184)",
+        "reference_pattern": "^([A-Z]{4}[0-9]{2}|[A-Z][0-9]{6})$",
+        "url_hosts": ["senate.gov", "www.senate.gov"],
+        "extension": "Added 2026-10-08: official legislative record (committee seats are confirmation and appropriations gates)"
+      },
+      "U.S. House roster": {
+        "label": "Clerk of the U.S. House of Representatives: official member list and committee assignments",
+        "reference_label": "House committee code (e.g. BA00) or Bioguide ID",
+        "reference_pattern": "^([A-Z]{2}[0-9]{2}|[A-Z][0-9]{6})$",
+        "url_hosts": ["clerk.house.gov"],
+        "extension": "Added 2026-10-08: official legislative record"
+      },
+      "Congress.gov member record": {
+        "label": "Library of Congress member record (official terms of service in Congress)",
+        "reference_label": "Bioguide ID (e.g. T000461)",
+        "reference_pattern": "^[A-Z][0-9]{6}$",
+        "url_hosts": ["bioguide.congress.gov", "www.congress.gov", "congress.gov"],
+        "extension": "Added 2026-10-08: official record of former members' service"
+      },
+      "Senate LDA filing": {
+        "label": "Lobbying Disclosure Act filing (U.S. Senate Office of Public Records / House Clerk, lda.gov)",
+        "reference_label": "LDA filing UUID",
+        "reference_pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "url_hosts": ["lda.gov", "lda.senate.gov"],
+        "extension": "Added 2026-10-08: statutory disclosure under the Lobbying Disclosure Act of 1995 (2 U.S.C. §1601 et seq.)"
+      },
+      "FARA registration": {
+        "label": "Foreign Agents Registration Act registration (U.S. Department of Justice, efile.fara.gov)",
+        "reference_label": "FARA registration number",
+        "reference_pattern": "^[0-9]{1,6}$",
+        "url_hosts": ["efile.fara.gov"],
+        "extension": "Added 2026-10-08: statutory registration under 22 U.S.C. §611 et seq."
+      },
+      "FEC filing": {
+        "label": "Federal Election Commission filing (api.open.fec.gov / fec.gov)",
+        "reference_label": "FEC committee ID or filing ID",
+        "reference_pattern": "^(C[0-9]{8}|[0-9]{5,12}|[A-Z0-9]{9,20})$",
+        "url_hosts": ["fec.gov", "www.fec.gov", "docquery.fec.gov"],
+        "extension": "Added 2026-10-08: statutory campaign-finance disclosure (52 U.S.C. §30101 et seq.)"
+      },
+      "Form 990": {
+        "label": "IRS Form 990 (nonprofit return)",
+        "reference_label": "Filer EIN + tax year (e.g. 52-2148698 / 2024)",
+        "reference_pattern": "^[0-9]{2}-[0-9]{7}\\s*/\\s*[0-9]{4}$",
+        "url_hosts": []
+      },
+      "NIH RePORTER Grant ID": {
+        "label": "NIH RePORTER grant",
+        "reference_label": "Core project number (e.g. R01AI177514)",
+        "reference_pattern": "^[0-9]?[A-Z][0-9A-Z]{2}[A-Z]{2}[0-9]{6}(-[0-9A-Z]+)?$",
+        "url_hosts": ["reporter.nih.gov"]
+      },
+      "Statute": {
+        "label": "Statute / regulation",
+        "reference_label": "Citation (e.g. 50 U.S.C. § 4565)",
+        "reference_pattern": "(U\\.S\\.C\\.|C\\.F\\.R\\.|Pub\\. ?L\\.|Stat\\.)",
+        "url_hosts": []
+      }
+    },
+    "require_https_url": true,
+    "allow_future_document_date": false
+  },
+  "integrity": {
+    "control_classes": {
+      "hard": "Structural control: voting equity, statutory veto, active fiduciary board seat",
+      "soft": "Influence: advisory role, alumni tie, philanthropic or research grant"
+    },
+    "token_pattern": "^[A-Z][A-Z0-9_]{2,60}$",
+    "conflict_weight_min": 0.0,
+    "conflict_weight_max": 1.0,
+    "conflict_weight_decimals": 2,
+    "require_endpoint_identity": true
+  }
+}

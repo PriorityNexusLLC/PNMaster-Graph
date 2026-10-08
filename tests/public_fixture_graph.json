@@ -1,0 +1,999 @@
+{
+  "schema_metadata": {
+    "project": "Priority Nexus LLC — Topological Governance & Epistemic Forensics Engine",
+    "version": "1.0.0",
+    "last_updated": "2026-10-07",
+    "core_mandate": [
+      "Identity",
+      "Transparency",
+      "Integrity"
+    ],
+    "domains": {
+      "DOM_A": "Defense, Aerospace & Tactical Primes",
+      "DOM_B": "Retail, FMCG & Global Food Supply",
+      "DOM_C": "Sovereign Statecraft, Central Banking & Institutional Capital",
+      "DOM_D": "Technology, Semiconductors, Cloud & Frontier AI",
+      "DOM_E": "Life Sciences, Public Health & Biotech Capital",
+      "DOM_F": "Energy, Natural Resources & Heavy Chemistry",
+      "DOM_G": "Media, Telecommunications & Cultural Architecture",
+      "BRIDGE_HUMAN": "Cross-Domain Executive / Sovereign Interlock Node"
+    },
+    "public_example": "The investigator's original graph (37 entities, 15 connections), reduced to what official records confirm: the three cores applied to real data.",
+    "confirmed_from_original": {
+      "EDGE_4454": "EDGE_002",
+      "EDGE_4455": "EDGE_005",
+      "EDGE_4456": "EDGE_006",
+      "EDGE_4665": "EDGE_008",
+      "EDGE_4457": "EDGE_011",
+      "EDGE_4666": "EDGE_013",
+      "EDGE_4667": "EDGE_015"
+    },
+    "left_out": [
+      {
+        "edge_id": "EDGE_001",
+        "source": "ENT_ASML",
+        "target": "ENT_AIRBUS",
+        "relationship_type": "BOARD_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_003",
+        "source": "ENT_ARAMCO",
+        "target": "ENT_BLACKROCK",
+        "relationship_type": "BOARD_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_004",
+        "source": "ENT_LOCKHEED",
+        "target": "ENT_US_STEEL",
+        "relationship_type": "BOARD_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_007",
+        "source": "ENT_FED_RESERVE",
+        "target": "ENT_NORTHROP",
+        "relationship_type": "CENTRAL_BANK_DEFENSE_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_009",
+        "source": "ENT_GOLDMAN",
+        "target": "ENT_DIU",
+        "relationship_type": "EXECUTIVE_REVOLVING_DOOR",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_010",
+        "source": "ENT_GOLDMAN",
+        "target": "ENT_FED_RESERVE",
+        "relationship_type": "MONETARY_REVOLVING_DOOR",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_012",
+        "source": "ENT_MCDONALDS",
+        "target": "ENT_FLAGSHIP",
+        "relationship_type": "BOARD_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      },
+      {
+        "edge_id": "EDGE_014",
+        "source": "ENT_OPENAI",
+        "target": "ENT_WALMART",
+        "relationship_type": "BOARD_INTERLOCK",
+        "why": "no primary-source confirmation found in filings or statutes yet"
+      }
+    ],
+    "leadership_lists": "removed: they carried no source citations"
+  },
+  "nodes": [
+    {
+      "id": "ENT_UN_CORE",
+      "label": "United Nations (UNGA / UNSC / ECOSOC)",
+      "entity_type": "SOVEREIGN_MULTILATERAL",
+      "domains": [
+        "DOM_C",
+        "DOM_E"
+      ],
+      "identity": {
+        "canonical_id": "UN-ORG-001",
+        "jurisdiction": "International / NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_US_TREASURY",
+      "label": "U.S. Department of the Treasury",
+      "entity_type": "SOVEREIGN_AGENCY",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-GOV-TREAS",
+        "jurisdiction": "United States"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_FED_RESERVE",
+      "label": "Federal Reserve System (Board & FRBNY)",
+      "entity_type": "CENTRAL_BANK",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-GOV-FED",
+        "jurisdiction": "United States"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_CFIUS",
+      "label": "CFIUS (Committee on Foreign Investment in the U.S.)",
+      "entity_type": "SOVEREIGN_INTERAGENCY_GATE",
+      "domains": [
+        "DOM_C",
+        "DOM_A",
+        "DOM_D",
+        "DOM_F"
+      ],
+      "identity": {
+        "canonical_id": "US-GOV-CFIUS",
+        "statute": "50 U.S.C. § 4565"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_IQT",
+      "label": "In-Q-Tel (IQT)",
+      "entity_type": "INTELLIGENCE_VENTURE_ARM",
+      "domains": [
+        "DOM_A",
+        "DOM_D",
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-EIN-52-2148698",
+        "jurisdiction": "Arlington, VA",
+        "irs_ein": "52-2149962"
+      },
+      "leadership": [],
+      "provenance": {
+        "identity_additions": [
+          {
+            "added": {
+              "irs_ein": "52-2149962"
+            },
+            "at": "2026-10-08T05:54:30+00:00",
+            "evidence_url": "https://projects.propublica.org/nonprofits/organizations/522149962",
+            "by": "upgrade_legacy"
+          }
+        ],
+        "identity_notes": [
+          {
+            "at": "2026-10-08T05:54:30+00:00",
+            "note": "canonical_id US-EIN-52-2148698 (from the original file) does not exist in IRS data; In-Q-Tel Inc's EIN is 52-2149962 (IRS e-file, via ProPublica). The original value is kept unchanged, as recorded."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENT_DIU",
+      "label": "Defense Innovation Unit (DIU) & OSC",
+      "entity_type": "DEFENSE_ACQUISITION_BRIDGE",
+      "domains": [
+        "DOM_A",
+        "DOM_D",
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-DOD-DIU",
+        "jurisdiction": "Mountain View, CA / Pentagon"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_BLACKROCK",
+      "label": "BlackRock, Inc.",
+      "entity_type": "UNIVERSAL_ASSET_MANAGER",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "sec_cik": "0002012383",
+        "legacy_cik": "0001364742",
+        "ticker": "BLK",
+        "jurisdiction": "New York, NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_VANGUARD",
+      "label": "The Vanguard Group, Inc.",
+      "entity_type": "UNIVERSAL_ASSET_MANAGER",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "sec_cik": "0000102909",
+        "jurisdiction": "Malvern, PA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_JPM",
+      "label": "JPMorgan Chase & Co.",
+      "entity_type": "G_SIB_BANK",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "sec_cik": "0000019617",
+        "ticker": "JPM",
+        "jurisdiction": "New York, NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_GOLDMAN",
+      "label": "The Goldman Sachs Group, Inc.",
+      "entity_type": "G_SIB_BANK",
+      "domains": [
+        "DOM_C"
+      ],
+      "identity": {
+        "sec_cik": "0000886982",
+        "ticker": "GS",
+        "jurisdiction": "New York, NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_LOCKHEED",
+      "label": "Lockheed Martin Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_A"
+      ],
+      "identity": {
+        "sec_cik": "0000936468",
+        "ticker": "LMT",
+        "jurisdiction": "Bethesda, MD"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_NORTHROP",
+      "label": "Northrop Grumman Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_A"
+      ],
+      "identity": {
+        "sec_cik": "0001133421",
+        "ticker": "NOC",
+        "jurisdiction": "Falls Church, VA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_GENERAL_DYNAMICS",
+      "label": "General Dynamics Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_A"
+      ],
+      "identity": {
+        "sec_cik": "0000040533",
+        "ticker": "GD",
+        "jurisdiction": "Reston, VA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_AIRBUS",
+      "label": "Airbus SE",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_A"
+      ],
+      "identity": {
+        "isin": "NL0000235190",
+        "ticker": "AIR.PA",
+        "jurisdiction": "Leiden, Netherlands / Toulouse, France",
+        "gleif_lei": "MINO79WLOO247M1IL051"
+      },
+      "leadership": [],
+      "provenance": {
+        "identity_additions": [
+          {
+            "added": {
+              "gleif_lei": "MINO79WLOO247M1IL051"
+            },
+            "at": "2026-10-08T05:52:33+00:00",
+            "evidence_url": "https://search.gleif.org/#/record/MINO79WLOO247M1IL051",
+            "by": "upgrade_legacy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENT_ASML",
+      "label": "ASML Holding N.V.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0000937966",
+        "ticker": "ASML",
+        "jurisdiction": "Veldhoven, Netherlands"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_TSMC",
+      "label": "Taiwan Semiconductor Manufacturing Co. (TSMC)",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0001046179",
+        "ticker": "TSM",
+        "jurisdiction": "Hsinchu, Taiwan"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_APPLE",
+      "label": "Apple Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0000320193",
+        "ticker": "AAPL",
+        "jurisdiction": "Cupertino, CA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_MICROSOFT",
+      "label": "Microsoft Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0000789019",
+        "ticker": "MSFT",
+        "jurisdiction": "Redmond, WA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_ORACLE",
+      "label": "Oracle Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0001341439",
+        "ticker": "ORCL",
+        "jurisdiction": "Austin, TX"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_IBM",
+      "label": "International Business Machines Corp. (IBM)",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0000051143",
+        "ticker": "IBM",
+        "jurisdiction": "Armonk, NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_OPENAI",
+      "label": "OpenAI",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "canonical_id": "US-DE-OPENAI",
+        "jurisdiction": "San Francisco, CA",
+        "irs_ein": "81-0861541"
+      },
+      "leadership": [],
+      "provenance": {
+        "identity_additions": [
+          {
+            "added": {
+              "irs_ein": "81-0861541"
+            },
+            "at": "2026-10-08T05:54:30+00:00",
+            "evidence_url": "https://projects.propublica.org/nonprofits/organizations/810861541",
+            "by": "upgrade_legacy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENT_PALO_ALTO",
+      "label": "Palo Alto Networks, Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_D"
+      ],
+      "identity": {
+        "sec_cik": "0001327567",
+        "ticker": "PANW",
+        "jurisdiction": "Santa Clara, CA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_JNJ",
+      "label": "Johnson & Johnson",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_E"
+      ],
+      "identity": {
+        "sec_cik": "0000200406",
+        "ticker": "JNJ",
+        "jurisdiction": "New Brunswick, NJ"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_PFIZER",
+      "label": "Pfizer Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_E"
+      ],
+      "identity": {
+        "sec_cik": "0000078003",
+        "ticker": "PFE",
+        "jurisdiction": "New York, NY"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_GSK",
+      "label": "GSK plc",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_E"
+      ],
+      "identity": {
+        "sec_cik": "0001131399",
+        "ticker": "GSK",
+        "jurisdiction": "London, UK"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_FLAGSHIP",
+      "label": "Flagship Pioneering",
+      "entity_type": "BIOTECH_VENTURE_INCUBATOR",
+      "domains": [
+        "DOM_E",
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-MA-FLAGSHIP",
+        "jurisdiction": "Cambridge, MA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_HARVARD_CHAN",
+      "label": "Harvard T.H. Chan School of Public Health (BDA)",
+      "entity_type": "ACADEMIC_POLICY_HUB",
+      "domains": [
+        "DOM_E",
+        "DOM_C"
+      ],
+      "identity": {
+        "canonical_id": "US-EDU-HARVARD-SPH",
+        "jurisdiction": "Boston, MA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_ARAMCO",
+      "label": "Saudi Arabian Oil Group (Saudi Aramco)",
+      "entity_type": "SOVEREIGN_ENERGY_MONOPOLY",
+      "domains": [
+        "DOM_F",
+        "DOM_C"
+      ],
+      "identity": {
+        "ticker": "2222.SR",
+        "jurisdiction": "Dhahran, Saudi Arabia",
+        "gleif_lei": "5586006WD91QHB7J4X50"
+      },
+      "leadership": [],
+      "provenance": {
+        "identity_additions": [
+          {
+            "added": {
+              "gleif_lei": "5586006WD91QHB7J4X50"
+            },
+            "at": "2026-10-08T05:52:33+00:00",
+            "evidence_url": "https://search.gleif.org/#/record/5586006WD91QHB7J4X50",
+            "by": "upgrade_legacy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENT_CHEVRON",
+      "label": "Chevron Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_F"
+      ],
+      "identity": {
+        "sec_cik": "0000093410",
+        "ticker": "CVX",
+        "jurisdiction": "San Ramon, CA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_US_STEEL",
+      "label": "United States Steel Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_F",
+        "DOM_A"
+      ],
+      "identity": {
+        "sec_cik": "0001163302",
+        "ticker": "X",
+        "jurisdiction": "Pittsburgh, PA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_DOW",
+      "label": "Dow Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_F"
+      ],
+      "identity": {
+        "sec_cik": "0001751788",
+        "ticker": "DOW",
+        "jurisdiction": "Midland, MI"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_DUPONT",
+      "label": "DuPont de Nemours, Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_F"
+      ],
+      "identity": {
+        "sec_cik": "0001666700",
+        "ticker": "DD",
+        "jurisdiction": "Wilmington, DE"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_WALMART",
+      "label": "Walmart Inc. / Madrone Capital",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_B",
+        "DOM_C"
+      ],
+      "identity": {
+        "sec_cik": "0000104169",
+        "ticker": "WMT",
+        "jurisdiction": "Bentonville, AR"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_MCDONALDS",
+      "label": "McDonald's Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_B"
+      ],
+      "identity": {
+        "sec_cik": "0000063908",
+        "ticker": "MCD",
+        "jurisdiction": "Chicago, IL"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_DISNEY",
+      "label": "The Walt Disney Company",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_G"
+      ],
+      "identity": {
+        "sec_cik": "0001744489",
+        "ticker": "DIS",
+        "jurisdiction": "Burbank, CA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_COMCAST",
+      "label": "Comcast Corporation",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_G"
+      ],
+      "identity": {
+        "sec_cik": "0001166691",
+        "ticker": "CMCSA",
+        "jurisdiction": "Philadelphia, PA"
+      },
+      "leadership": [],
+      "provenance": {}
+    },
+    {
+      "id": "ENT_ATT",
+      "label": "AT&T Inc.",
+      "entity_type": "CORPORATION",
+      "domains": [
+        "DOM_G"
+      ],
+      "identity": {
+        "sec_cik": "0000732717",
+        "ticker": "T",
+        "jurisdiction": "Dallas, TX"
+      },
+      "leadership": [],
+      "provenance": {}
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "EDGE_4454",
+      "source": "ENT_BLACKROCK",
+      "target": "ENT_APPLE",
+      "relationship_type": "DUAL_INTERLOCK_EQUITY_AND_BOARD",
+      "human_bridge": "Susan Wagner (director_of at BlackRock, Inc.; director_of at Apple Inc.)",
+      "transparency": {
+        "verification_source": "Form 3/4/5",
+        "source_reference": "0001059235-26-000004",
+        "citation_url": "https://www.sec.gov/Archives/edgar/data/1059235/000105923526000004/0001059235-26-000004-index.htm",
+        "document_date": "2026-02-26",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2026-01-21",
+            "url": "https://www.sec.gov/Archives/edgar/data/1059235/000201238326000822/0002012383-26-000822-index.htm",
+            "edge": "EDGE_1114",
+            "role": "DIRECTOR_OF BlackRock, Inc."
+          },
+          {
+            "date": "2026-02-26",
+            "url": "https://www.sec.gov/Archives/edgar/data/1059235/000105923526000004/0001059235-26-000004-index.htm",
+            "edge": "EDGE_1098",
+            "role": "DIRECTOR_OF Apple Inc."
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "VOTING_BLOCK_AND_BOARD",
+        "control_class": "hard",
+        "conflict_weight": 0.95,
+        "supersedes": "EDGE_002",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "6dede574b878b655cdfc7cf1269f7a938e1afe8feb5bb9b3b94fabc6dca70ff5",
+        "recorded_at": "2026-10-08T05:52:33+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_SUSAN_WAGNER",
+        "review": "automatic (corroboration)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4455",
+      "source": "ENT_LOCKHEED",
+      "target": "ENT_PALO_ALTO",
+      "relationship_type": "BOARD_INTERLOCK",
+      "human_bridge": "John Donovan (director_of at Lockheed Martin Corporation; director_of at Palo Alto Networks, Inc.)",
+      "transparency": {
+        "verification_source": "Form 3/4/5",
+        "source_reference": "0001225208-26-008067",
+        "citation_url": "https://www.sec.gov/Archives/edgar/data/1353825/000122520826008067/0001225208-26-008067-index.htm",
+        "document_date": "2026-10-01",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2026-10-01",
+            "url": "https://www.sec.gov/Archives/edgar/data/1353825/000122520826008067/0001225208-26-008067-index.htm",
+            "edge": "EDGE_020",
+            "role": "DIRECTOR_OF Lockheed Martin Corporation"
+          },
+          {
+            "date": "2025-12-11",
+            "url": "https://www.sec.gov/Archives/edgar/data/1353825/000119312525316256/0001193125-25-316256-index.htm",
+            "edge": "EDGE_048",
+            "role": "DIRECTOR_OF Palo Alto Networks, Inc."
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "CYBER_DEFENSE_ALIGNMENT",
+        "control_class": "hard",
+        "conflict_weight": 0.85,
+        "supersedes": "EDGE_005",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "8a0630adccd434a79d5d777f19d1c30459ca4ab762953cb0f6a5363274f6cc85",
+        "recorded_at": "2026-10-08T05:52:33+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_JOHN_DONOVAN",
+        "review": "automatic (corroboration)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4456",
+      "source": "ENT_CHEVRON",
+      "target": "ENT_LOCKHEED",
+      "relationship_type": "BOARD_INTERLOCK",
+      "human_bridge": "Debra L Reed (director_of at Chevron Corporation; director_of at Lockheed Martin Corporation)",
+      "transparency": {
+        "verification_source": "Form 3/4/5",
+        "source_reference": "0000093410-26-000146",
+        "citation_url": "https://www.sec.gov/Archives/edgar/data/1225947/000009341026000146/0000093410-26-000146-index.htm",
+        "document_date": "2026-05-29",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2026-05-29",
+            "url": "https://www.sec.gov/Archives/edgar/data/1225947/000009341026000146/0000093410-26-000146-index.htm",
+            "edge": "EDGE_046",
+            "role": "DIRECTOR_OF Chevron Corporation"
+          },
+          {
+            "date": "2026-02-18",
+            "url": "https://www.sec.gov/Archives/edgar/data/1225947/000122520826002083/0001225208-26-002083-index.htm",
+            "edge": "EDGE_017",
+            "role": "DIRECTOR_OF Lockheed Martin Corporation"
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "ENERGY_DEFENSE_ALIGNMENT",
+        "control_class": "hard",
+        "conflict_weight": 0.88,
+        "supersedes": "EDGE_006",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "3517f6157716bf0fe54373be6a5b9cb7040791fd459763362db693b09d652284",
+        "recorded_at": "2026-10-08T05:52:33+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_DEBRA_L_REED",
+        "review": "automatic (corroboration)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4665",
+      "source": "ENT_ORACLE",
+      "target": "ENT_IQT",
+      "relationship_type": "INTELLIGENCE_TRUSTEE_INTERLOCK",
+      "human_bridge": "Safra Catz (director_of at Oracle Corporation; director_of at In-Q-Tel (IQT))",
+      "transparency": {
+        "verification_source": "Form 990",
+        "source_reference": "52-2149962 / 2025",
+        "citation_url": "https://projects.propublica.org/nonprofits/organizations/522149962",
+        "document_date": "2026-02-09",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2025-10-27",
+            "url": "https://www.sec.gov/Archives/edgar/data/1341439/000134143925000063/0001341439-25-000063-index.htm",
+            "edge": "EDGE_4195",
+            "role": "DIRECTOR_OF Oracle Corporation"
+          },
+          {
+            "date": "2026-02-09",
+            "url": "https://projects.propublica.org/nonprofits/organizations/522149962",
+            "edge": "EDGE_4664",
+            "role": "DIRECTOR_OF In-Q-Tel (IQT)"
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "CLASSIFIED_CLOUD_VENTURE_BRIDGE",
+        "control_class": "hard",
+        "conflict_weight": 0.92,
+        "supersedes": "EDGE_008",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "bb51d8d9e9c6d78a005e1b268d9ef45dd37371c522e88842396700508da39965",
+        "recorded_at": "2026-10-08T05:54:30+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_SAFRA_CATZ",
+        "review": "automatic (corroboration)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4457",
+      "source": "ENT_US_TREASURY",
+      "target": "ENT_CFIUS",
+      "relationship_type": "STATUTORY_CHAIR",
+      "human_bridge": "Scott Bessent (Secretary of the Treasury / Statutory CFIUS Chair)",
+      "transparency": {
+        "verification_source": "Statute",
+        "source_reference": "50 U.S.C. § 4565",
+        "citation_url": "https://www.law.cornell.edu/uscode/text/50/4565",
+        "document_date": "2026-10-08",
+        "date_verified": "2026-10-08",
+        "active": true
+      },
+      "integrity": {
+        "control_type": "SOVEREIGN_MNA_VETO",
+        "control_class": "hard",
+        "conflict_weight": 1.0,
+        "supersedes": "EDGE_011",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "c8317913aff9ebbb77d0733da9444287ff00d24a0e4b7600650ab90f2edaced3",
+        "recorded_at": "2026-10-08T05:52:33+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "review": "automatic (statute citation)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4666",
+      "source": "ENT_DUPONT",
+      "target": "ENT_COMCAST",
+      "relationship_type": "BOARD_INTERLOCK",
+      "human_bridge": "Edward D Breen (director_of at DuPont de Nemours, Inc.; director_of at Comcast Corporation)",
+      "transparency": {
+        "verification_source": "Form 3/4/5",
+        "source_reference": "0001225208-26-008105",
+        "citation_url": "https://www.sec.gov/Archives/edgar/data/1166691/000122520826008105/0001225208-26-008105-index.htm",
+        "document_date": "2026-10-02",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2026-08-19",
+            "url": "https://www.sec.gov/Archives/edgar/data/1666700/000162828026058089/0001628280-26-058089-index.htm",
+            "edge": "EDGE_4079",
+            "role": "DIRECTOR_OF DuPont de Nemours, Inc."
+          },
+          {
+            "date": "2026-10-02",
+            "url": "https://www.sec.gov/Archives/edgar/data/1166691/000122520826008105/0001225208-26-008105-index.htm",
+            "edge": "EDGE_4649",
+            "role": "DIRECTOR_OF Comcast Corporation"
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "INDUSTRIAL_TO_MEDIA_BRIDGE",
+        "control_class": "hard",
+        "conflict_weight": 0.82,
+        "supersedes": "EDGE_013",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "c3a5f91070b75675bdeb855abfa4e2e8c705dc97f960caa4c2906806955e8933",
+        "recorded_at": "2026-10-08T05:54:30+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_EDWARD_D_BREEN",
+        "review": "automatic (corroboration)"
+      }
+    },
+    {
+      "edge_id": "EDGE_4667",
+      "source": "ENT_OPENAI",
+      "target": "ENT_PFIZER",
+      "relationship_type": "HISTORICAL_BOARD_INTERLOCK",
+      "human_bridge": "Susan Desmond-Hellmann (director_of at OpenAI; director_of at Pfizer Inc.)",
+      "transparency": {
+        "verification_source": "Form 3/4/5",
+        "source_reference": "0001225208-26-004658",
+        "citation_url": "https://www.sec.gov/Archives/edgar/data/1507911/000122520826004658/0001225208-26-004658-index.htm",
+        "document_date": "2026-04-27",
+        "date_verified": "2026-10-08",
+        "active": true,
+        "evidence_trail": [
+          {
+            "date": "2025-11-17",
+            "url": "https://projects.propublica.org/nonprofits/organizations/810861541",
+            "edge": "EDGE_4663",
+            "role": "DIRECTOR_OF OpenAI"
+          },
+          {
+            "date": "2026-04-27",
+            "url": "https://www.sec.gov/Archives/edgar/data/1507911/000122520826004658/0001225208-26-004658-index.htm",
+            "edge": "EDGE_1465",
+            "role": "DIRECTOR_OF Pfizer Inc."
+          }
+        ],
+        "activity_basis": "active only if both roles are active"
+      },
+      "integrity": {
+        "control_type": "AI_TO_PHARMA_BRIDGE",
+        "control_class": "hard",
+        "conflict_weight": 0.8,
+        "supersedes": "EDGE_015",
+        "weight_basis": "carried over from the investigator's original record",
+        "verification_hash": "860987e6969d9410227b40e6a338199a6330f74880bf0e0edffe2feaf76da8b4",
+        "recorded_at": "2026-10-08T05:54:30+00:00"
+      },
+      "provenance": {
+        "via": "upgrade_legacy",
+        "person": "ENT_SUSAN_DESMOND_HELLMANN",
+        "review": "automatic (corroboration)"
+      }
+    }
+  ]
+}

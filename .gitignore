@@ -1,0 +1,27 @@
+# NEVER public: investigation data, logs, reports, confirmations, keys
+data/*
+!data/governance.json
+!data/sic_domains.json
+!data/other_domains.json
+!data/committee_domains.json
+!data/regulations.json
+!data/README.md
+
+# personal or local
+docs/LinkedIn setup.md
+*.log
+*.err
+config.json
+paths.json
+.claude/
+.env
+*.key
+
+# Python / editor clutter
+__pycache__/
+*.pyc
+*.tmp
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

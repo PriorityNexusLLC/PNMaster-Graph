@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Priority Nexus Graph</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">◈</span> Priority Nexus <span class="sub">Master Graph</span></div>
+  <div class="stats" id="stats"></div>
+  <button class="ghost" id="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button>
+</header>
+
+<main class="layout">
+  <!-- ============ left: filters + pathfinder ============ -->
+  <aside class="panel left" aria-label="Filters and path search">
+    <section>
+      <h2>Domains</h2>
+      <div id="domain-filters" class="domain-list"></div>
+      <div class="row small">
+        <button type="button" class="link" id="dom-all">All</button>
+        <button type="button" class="link" id="dom-none">None</button>
+        <label class="check"><input type="checkbox" id="hide-isolated"> Hide unconnected</label>
+      </div>
+      <label class="check" title="People are the bridges between organizations. Hidden, organizations that share a person are joined by a dotted line."><input type="checkbox" id="show-people"> Show people (pathway layer) <span id="people-count" class="muted"></span></label>
+    </section>
+
+    <section>
+      <h2>Focus</h2>
+      <p class="muted small" id="focus-hint">Big map? Pick one company or person to see only its neighborhood.</p>
+      <label>Entity<select id="focus-entity"></select></label>
+      <div class="row">
+        <label class="check"><input type="radio" name="focus-hops" value="1" checked> 1 hop</label>
+        <label class="check"><input type="radio" name="focus-hops" value="2"> 2 hops</label>
+        <button type="button" class="ghost" id="focus-clear">Show all</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Shortest path</h2>
+      <div class="seg" role="tablist">
+        <button type="button" class="seg-btn active" data-pmode="entity">Entity → Entity</button>
+        <button type="button" class="seg-btn" data-pmode="domain">Domain → Domain</button>
+      </div>
+      <form id="path-form" autocomplete="off">
+        <div data-pshow="entity">
+          <label>From<select id="path-from" required></select></label>
+          <label>To<select id="path-to" required></select></label>
+        </div>
+        <div data-pshow="domain" hidden>
+          <div class="lbl">From domain(s)</div>
+          <div id="path-from-doms" class="chip-picks"></div>
+          <div class="lbl">To domain(s)</div>
+          <div id="path-to-doms" class="chip-picks"></div>
+        </div>
+        <fieldset class="opts">
+          <label class="check"><input type="radio" name="pmode" value="hops" checked> Fewest hops</label>
+          <label class="check"><input type="radio" name="pmode" value="strongest"> Strongest ties</label>
+          <label class="check"><input type="checkbox" id="path-inactive"> Include historical (inactive) ties</label>
+          <label class="check"><input type="checkbox" id="path-restrict"> Route only through checked domains</label>
+        </fieldset>
+        <div class="row">
+          <button type="submit" class="primary">Find path</button>
+          <button type="button" class="ghost" id="path-clear">Clear</button>
+        </div>
+      </form>
+      <div id="path-results" class="results" aria-live="polite"></div>
+    </section>
+
+    <section class="legend">
+      <h2>Legend</h2>
+      <div class="legend-row"><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" class="lg-edge"/></svg> active tie (width = conflict weight)</div>
+      <div class="legend-row"><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" class="lg-edge inactive"/></svg> historical / inactive</div>
+      <div class="legend-row"><svg width="16" height="16" viewBox="-8 -8 16 16"><path d="M6,2.5L2.5,6L-2.5,6L-6,2.5L-6,-2.5L-2.5,-6L2.5,-6L6,-2.5Z" class="lg-node noid"/></svg> no canonical identifier yet</div>
+      <div class="legend-row"><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" class="lg-edge path"/></svg> highlighted path</div>
+      <div class="legend-row"><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" class="via" stroke-width="3"/></svg> shares a person (people hidden)</div>
+      <div class="legend-row"><svg width="16" height="16" viewBox="-8 -8 16 16"><circle r="7.5" fill="url(#lg-person-halo)"/><path d="M0,0L0,-4A4,4 0 0 1 0,4Z" fill="var(--dom-A)"/><path d="M0,0L0,4A4,4 0 0 1 0,-4Z" fill="var(--dom-C)"/><circle r="4" fill="url(#lg-person-sheen)"/></svg> glowing circle = person (only people are round); colors = the domains they bridge</div>
+      <div class="lbl">Shapes: each domain has its own, so color isn't needed to tell them apart</div>
+      <div id="legend-shapes" class="legend-shapes"></div>
+      <div class="legend-row small">An organization in several domains keeps its first domain's shape, split into its domains' colors.</div>
+    </section>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <radialGradient id="lg-person-core"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" style="stop-color:var(--person-glow)"/><stop offset="1" style="stop-color:var(--person)"/></radialGradient>
+        <radialGradient id="lg-person-sheen" cx=".4" cy=".35" r=".65"><stop offset="0" stop-color="#ffffff" stop-opacity=".6"/><stop offset=".35" stop-color="#ffffff" stop-opacity=".12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+        <radialGradient id="lg-person-halo"><stop offset=".35" style="stop-color:var(--person-glow);stop-opacity:.55"/><stop offset="1" style="stop-color:var(--person-glow);stop-opacity:0"/></radialGradient>
+      </defs>
+    </svg>
+  </aside>
+
+  <!-- ============ center: graph ============ -->
+  <section class="graph-wrap" aria-label="Graph">
+    <svg id="graph" role="img" aria-label="Force-directed graph of entities and verified connections"></svg>
+    <canvas id="graph3d" aria-label="3D view of the graph" style="display:none"></canvas>
+    <div id="tip3d" class="tip3d" hidden></div>
+    <div class="graph-hint">Drag nodes · scroll to zoom · drag background to pan · click a node for details</div>
+    <div class="graph-controls">
+      <button type="button" class="ghost mode" id="mode-3d" aria-pressed="false" title="Switch between flat and 3D view">3D</button>
+      <button type="button" class="ghost" id="spin-3d" aria-pressed="false" title="Slowly rotate (3D)" hidden>⟳</button>
+      <button type="button" class="ghost" id="zoom-in" aria-label="Zoom in">＋</button>
+      <button type="button" class="ghost" id="zoom-out" aria-label="Zoom out">－</button>
+      <button type="button" class="ghost" id="zoom-fit" aria-label="Fit graph">⤢</button>
+      <button type="button" class="ghost" id="relayout" aria-label="Re-run layout">↻</button>
+    </div>
+  </section>
+
+  <!-- ============ right: tabs ============ -->
+  <aside class="panel right" aria-label="Details and forms">
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" data-tab="details">Details</button>
+      <button type="button" class="tab" data-tab="add">Add connection</button>
+      <button type="button" class="tab" data-tab="entity">Add entity</button>
+      <button type="button" class="tab" data-tab="review">Review</button>
+      <button type="button" class="tab" data-tab="issues">Integrity <span id="issue-count" class="badge"></span></button>
+      <button type="button" class="tab" data-tab="balance">Balance</button>
+      <button type="button" class="tab" data-tab="log">Log</button>
+    </nav>
+
+    <div class="tab-body" data-tabbody="details">
+      <div id="details"><p class="muted">Select a node or an edge on the graph.</p></div>
+    </div>
+
+    <!-- ============ Add Verified Connection ============ -->
+    <div class="tab-body" data-tabbody="add" hidden>
+      <form id="edge-form" novalidate autocomplete="off">
+        <h2>Add Verified Connection</h2>
+        <p class="muted small">Every field marked ● is required. The server re-checks everything before writing to <code>priority_nexus_graph.json</code>; a backup is taken first and the change is logged.</p>
+
+        <fieldset class="core identity">
+          <legend><span class="core-tag">1</span> Identity</legend>
+          <label>● Source entity<select name="source" required></select></label>
+          <label>● Target entity<select name="target" required></select></label>
+          <p class="hint" data-hint="endpoints">Both entities must already have a canonical identifier (sec_cik, gleif_lei, doi or canonical_id).</p>
+          <label>● Relationship type<input name="relationship_type" list="rel-types" placeholder="BOARD_INTERLOCK" required></label>
+          <datalist id="rel-types"></datalist>
+          <label>Human bridge<input name="human_bridge" maxlength="400" placeholder="Who connects them, with roles on each side"></label>
+        </fieldset>
+
+        <fieldset class="core transparency">
+          <legend><span class="core-tag">2</span> Transparency</legend>
+          <label>● Primary source type<select name="verification_source" required></select></label>
+          <label><span id="ref-label">● Source reference</span><input name="source_reference" required></label>
+          <label>● Citation URL<input name="citation_url" type="url" placeholder="https://" required></label>
+          <div class="grid2">
+            <label>● Document date<input name="document_date" type="date" required></label>
+            <label class="check tall"><input type="checkbox" name="active" checked> Tie currently active</label>
+          </div>
+          <div class="grid2">
+            <label>Tenure start<input name="tenure_start" type="date"></label>
+            <label>Tenure end<input name="tenure_end" type="date"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="core integrity">
+          <legend><span class="core-tag">3</span> Integrity</legend>
+          <label>● Control type<input name="control_type" list="control-types" placeholder="FIDUCIARY_GOVERNANCE" required></label>
+          <datalist id="control-types"></datalist>
+          <div class="lbl">● Control class</div>
+          <div id="control-classes" class="radio-cards"></div>
+          <label>● Conflict weight <output id="w-out">0.50</output>
+            <div class="weight-row">
+              <input type="range" name="conflict_weight_range" min="0" max="1" step="0.01" value="0.5" aria-label="Conflict weight slider">
+              <input type="number" name="conflict_weight" min="0" max="1" step="0.01" value="0.50" required>
+            </div>
+          </label>
+        </fieldset>
+
+        <fieldset class="core supersede" id="supersede-box" hidden>
+          <legend>Supersede existing edge</legend>
+          <p class="hint" id="supersede-msg"></p>
+          <label class="check"><input type="checkbox" name="do_supersede"> Supersede it (the old edge is kept and marked)</label>
+          <label>● Reason<textarea name="supersede_reason" rows="2" placeholder="What new evidence replaces the old record?"></textarea></label>
+        </fieldset>
+
+        <ul class="errors" id="edge-errors" aria-live="polite"></ul>
+        <div class="row">
+          <button type="submit" class="primary" id="edge-submit">Validate &amp; save</button>
+          <button type="reset" class="ghost">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ============ Add entity / identifier ============ -->
+    <div class="tab-body" data-tabbody="entity" hidden>
+      <form id="node-form" novalidate autocomplete="off">
+        <h2>Add Verified Entity</h2>
+        <label>● Name<input name="label" required></label>
+        <label>● Entity type<input name="entity_type" list="entity-types" placeholder="CORPORATION" required></label>
+        <datalist id="entity-types"></datalist>
+        <div class="lbl">● Domains</div>
+        <div id="node-doms" class="chip-picks"></div>
+        <div class="lbl">● Canonical identifier (at least one)</div>
+        <div id="node-ids" class="id-grid"></div>
+        <label>Leadership (one per line)<textarea name="leadership" rows="3"></textarea></label>
+        <ul class="errors" id="node-errors" aria-live="polite"></ul>
+        <button type="submit" class="primary">Validate &amp; save entity</button>
+      </form>
+
+      <form id="ident-form" novalidate autocomplete="off">
+        <h2>Add identifier to existing entity</h2>
+        <p class="muted small">Identifiers can be added, never changed or removed.</p>
+        <label>● Entity<select name="node_id" required></select></label>
+        <div class="grid2">
+          <label>● Key<select name="key"></select></label>
+          <label>● Value<input name="value" required></label>
+        </div>
+        <label>Evidence URL<input name="evidence_url" type="url" placeholder="https://"></label>
+        <ul class="errors" id="ident-errors" aria-live="polite"></ul>
+        <button type="submit" class="primary">Add identifier</button>
+      </form>
+    </div>
+
+    <div class="tab-body" data-tabbody="review" hidden>
+      <h2>Review staged evidence</h2>
+      <p class="muted small">Connections staged from HOOT's SEC evidence. Nothing enters the graph until you approve it here, and every approved row is re-validated.</p>
+      <details class="edge-card small">
+        <summary><b>How to review</b> (full guide: Obsidian → HOOT/Review Guide)</summary>
+        <ol>
+          <li><b>Read the card</b>: who · relationship · what; green <i>active</i> = a filing in the last ~15 months; click <i>filing</i> to see the SEC proof.</li>
+          <li><b>Approve only if</b>: right person (check the filing if the name looks odd) · the filing says it · it matters to your investigation. Unsure? Skip; nothing is lost.</li>
+          <li><b>Domains</b> for every new entity: people show suggestions marked *; companies are your call (the industry is shown as a hint).</li>
+          <li><b>Weight</b> 0.00–1.00 is your judgment. "Use suggested weights" fills HOOT's generic default; change any you disagree with.</li>
+          <li><b>Validate &amp; add</b>: rejected rows come back with a reason. Every save is backed up and logged.</li>
+        </ol>
+      </details>
+      <div id="review"></div>
+    </div>
+
+    <div class="tab-body" data-tabbody="issues" hidden>
+      <h2>Integrity audit</h2>
+      <p class="muted small">Every node and edge measured against the mandate. Nothing is hidden or auto-fixed.</p>
+      <div class="chain-status" data-chain></div>
+      <div id="issues"></div>
+    </div>
+
+    <div class="tab-body" data-tabbody="balance" hidden>
+      <h2>Balance check</h2>
+      <p class="muted small">Is power in the mapped network checked by anything? Verified, active, primary-source connections only; each measure names its published standard. Signals for review, not findings. They describe the filings held.</p>
+      <div id="balance"></div>
+    </div>
+
+    <div class="tab-body" data-tabbody="log" hidden>
+      <h2>Event log</h2>
+      <p class="muted small">Append-only, hash-chained <code>data/audit_log.jsonl</code>: writes, corrections, rejections and path-query boundary crossings. Each entry carries the fingerprint of the one before it.</p>
+      <div class="chain-status" data-chain></div>
+      <div id="log"></div>
+    </div>
+  </aside>
+</main>
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
