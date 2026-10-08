@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use or refer to this work, please cite it as below."
+title: "PNMaster-Graph: Priority Nexus Master Graph"
+abstract: "Evidence-first mapping of institutional power from official public records, built on three cores: Identity, Transparency, Integrity."
+type: software
+authors:
+  - name: "Priority Nexus LLC"
+  - given-names: "Josie"
+    family-names: "Anderson"
+    affiliation: "Priority Nexus LLC"
+    email: "theaistherapist@gmail.com"
+repository-code: "https://github.com/PriorityNexusLLC/PNMaster-Graph"
+url: "https://prioritynexusllc.github.io"
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-10-08"
+keywords:
+  - governance
+  - transparency
+  - accountability
+  - public records
+  - integrity

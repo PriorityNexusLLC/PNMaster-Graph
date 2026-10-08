@@ -15,7 +15,7 @@ from engine import paths  # noqa: E402
 
 PUBLIC_DATA = ["governance.json", "sic_domains.json", "other_domains.json", "committee_domains.json", "regulations.json"]
 PUBLIC_DOCS = ["concept-paper.md", "Publishing safely.md"]
-TOP = ["CLAUDE.md", "run.cmd", "update_all.cmd", "check_docs.cmd", "auto_reports.cmd", ".gitignore"]
+TOP = ["CLAUDE.md", "CITATION.cff", "run.cmd", "update_all.cmd", "check_docs.cmd", "auto_reports.cmd", ".gitignore"]
 HOOT_SKIP = {"cache", "graph.db", "config.json", "people_sweep.json", "identity_fixes.json", "hoot.db", "__pycache__"}
 # investigation-specific lines that stay private
 PRIVATE_LINES = re.compile(r"McDonald|mcd_board|corporate names\.md|Connections\.xlsx|ENT_MCDONALDS", re.I)
