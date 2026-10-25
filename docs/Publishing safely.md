@@ -21,16 +21,16 @@ record says, not making your own claim.
 | **1. Draft (version 1)** | You click **Draft report**. Marked "DRAFT, do not publish". | Nothing goes out unchecked. |
 | **2. Independent review (version 2)** | Runs automatically right after. Re-opens **every** source filing and confirms it names both parties; confirms no record changed; scans the wording; checks the safety sections; adds a plain-language glossary. | Catches mistakes and risky words before anyone else sees them. |
 | **3. Review notes (just for you)** | Lists each problem with the line, *why* it's risky, and *what to write instead*. | You learn the safe wording as you go. |
-| **4. Right of reply** | You contact each organization named; you write the date and their answer in section 6 of your working copy; click **Re-check**. | Fairness, and their answer goes in the report. |
-| **5. Verdict** | **READY TO PUBLISH** only when sources, records, wording, structure, reply and integrity all pass. | A clear gate: if it isn't green, it doesn't go out. |
+| **4. Right to respond** | Section 6 states the route to respond after publication; no one is contacted first. When an answer arrives, you write its date in section 6 and post it in full; click **Re-check**. | Fairness: their answer goes in the report, under their name. |
+| **5. Verdict** | **READY TO PUBLISH** only when sources, records, wording, structure, the route to respond and integrity all pass. | A clear gate: if it isn't green, it doesn't go out. |
 | **6. Fingerprints** | Each version's fingerprint goes into your tamper-evident log. | You can prove exactly what you published, and when. |
 
 **The four verdicts:**
 - **BLOCKED: do not publish.** A source didn't check out, a record vanished, or the text contains a legal conclusion
   ("illegal", "fraud", "violated"…). Fix it first.
 - **NEEDS ATTENTION.** Loaded or motive words, private details, or a record changed since the draft. Fix, then re-check.
-- **VERIFIED: next step is the right of reply.** The report is sound; now contact the organizations.
-- **READY TO PUBLISH.** Everything passed, and every organization answered or had 14 days to.
+- **VERIFIED: section 6 must state the route to respond.** The report is sound; add the route (respond after publication, posted in full).
+- **READY TO PUBLISH.** Everything passed. No one is asked to comment first.
 
 ## Words the review stops, and what to write instead
 
@@ -49,15 +49,17 @@ Quotes from the organizations' own replies are theirs, so the review doesn't fla
 ## Your habits (the system can't do these for you)
 
 1. **Publish only "READY TO PUBLISH" versions**, the *reviewed* file, never the draft.
-2. **Write to every organization before publishing.** Use the suggested message in section 6. Send it to their press
-   or media-relations contact (public on their website). Wait 14 days, or until they answer. Keep a copy of what you sent.
-3. **Publish their answer in full**, or "did not respond by [date]".
+2. **State the route to respond in section 6.** No one is written to before publishing; a report goes out when the
+   checks pass.
+3. **Post every response in full**, under the sender's name, the day it arrives. Every e-mail is read by a program the
+   moment it arrives and the check begins; the message stays posted under the person or company it says it is from
+   unless the check shows otherwise. Contact details are never posted.
 4. **Correct openly and fast.** If someone shows an error: thank them, check it, publish a dated correction at the
    top, and keep the old version available. Never quietly edit.
 5. **Stick to public roles.** Directors, officers and owners, in those roles. Nothing about families or private life.
 6. **Don't add opinion to the report.** If you want to share your view, do it separately and label it as opinion.
 7. **Save every source** with the Internet Archive's Save Page Now (web.archive.org) before publishing.
-8. **Keep your records**: the report, its review notes, your reply emails and the audit anchors. They show your care.
+8. **Keep your records**: the report, its review notes, the responses received and the audit anchors. They show your care.
 
 ## Free and low-cost help (no lawyer budget needed)
 

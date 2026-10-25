@@ -80,14 +80,16 @@ These are enforced as nine gates, three per principle:
   must name both parties; every record must be unchanged; the wording is screened for accusations, legal
   conclusions, motive, overstated certainty and private details; protective sections must be present.
 - **Attributed wording.** Findings read "filings report X as director of Y", not "X is…".
-- **Right of reply.** Every organization a finding concerns is invited to respond before publication, and the
-  response is published.
+- **Right to respond.** No one is asked to comment before publication: a finding goes out when its checks pass.
+  Anyone named may respond afterwards, and the response is published in full, under their name, the day it arrives.
 - **Public-record enforcement only.** Enforcement history appears only as already published by the agency,
   quoted, with the agency's own qualifications (for example, that a settlement involves no determination of
   liability).
 - **Whistleblower safeguard.** If an analysis suggests a possible new fraud against public funds, the report is
   held: such matters belong in a sealed legal process, not a publication.
-- **Corrections in the open,** dated, with prior versions preserved.
+- **Corrections in the open,** dated, with prior versions preserved. Every message that arrives is read by a program
+  the moment it arrives and the check begins; the message is posted at once, in full, under the person or company it
+  says it is from, and stays that way unless the check shows otherwise. Contact details are never posted.
 
 ## 5. From flags to help
 
